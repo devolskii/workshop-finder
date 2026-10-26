@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  --color-brand: #C00;
+  --color-brand-tint: #FFF4F4;
+  --color-ink: #202020;
+  --color-muted: #626262;
+  --color-soft: #727272;
+  --color-line: #D8D8D8;
+  --color-canvas: #F5F5F5;
+}
+
+@layer base {
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+}
