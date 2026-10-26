@@ -68,3 +68,15 @@ Workshop information is stored in a file called `src/data/workshops.ts` (four ma
    - **Time:** 2 hours including this explanation.
 
    - **Help:** Figma AI (for the look), Builder.io (to start the code), GitHub Copilot (for fixes), plus Vite/React/Tailwind/React Router/React Icons tools.
+
+## Development walkthrough
+
+1. Scaffold: started from the React + TypeScript + Vite template; added Tailwind CSS v4 (`@tailwindcss/vite`), React Router v7 and React Icons; set theme tokens (brand red, ink/muted/line) in `src/styles/global.css`.
+2. Data: defined a typed `Workshop` model and four fictional workshops (one sold-out) in `src/data/workshops.ts`.
+3. Layout: `Layout` holds `selectedIds` state and exposes it through router outlet context; `SiteHeader` shows the live selection count, `SiteFooter` links to accessibility info.
+4. Find page: `FindWorkshopPage` combines keyword search (multi-term, over title/category/schedule) with a category select; computes results and a no-results state with a reset action.
+5. Cards: `WorkshopCard` renders title, category, schedule and seats; sold-out cards are muted with a disabled “Unavailable” button; available cards toggle selection with `aria-pressed`.
+6. Selection: `SelectionPanel` lists selected workshops with remove and a single enroll action that routes to `/enroll/:ids`; shows an empty state when nothing is selected.
+7. Info routes: `InfoPage` renders “How it works”, “Accessibility” and enrollment placeholder content.
+8. Accessibility: labelled inputs, visible `focus-visible` outlines, `aria-live` result count, disabled controls for sold-out items, responsive flex/grid layouts.
+9. Verify: `npm run build` succeeds; manually checked mobile/desktop widths, keyboard tab/Enter/Space, combined filters, sold-out prevention and reset flow.
