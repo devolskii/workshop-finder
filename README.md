@@ -14,6 +14,7 @@ npm run dev
 ```
 
 **Local Development URL:** (usually) http://localhost:5173
+**Deployment URL:** https://workshopfinder.netlify.app/
 
 ## Other scripts
 
