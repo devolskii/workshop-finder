@@ -1,35 +1,69 @@
-# React + TypeScript + Vite
+# Workshop Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small app made for phones that helps you find workshops: search and filter them check if there are seats left and make a list of your choices. It's made for someone who uses a phone and wants to find a workshop and choose it without getting confused.
 
-Currently, two official plugins are available:
+## Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 18+ and npm
 
-## React Compiler
+## Run
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+**Local Development URL:** (usually) http://localhost:5173
+
+## Other scripts
+
+```sh
+npm run build     # build the app for production into the dist/ folder
+npm run preview   # run the production build
+```
+
+## Tech stack
+
+- React 19 and TypeScript Vite 8
+
+- Tailwind CSS v4
+
+- React Router v7 (for moving between pages)
+
+- React Icons (for icons)
+
+## Data
+
+Workshop information is stored in a file called `src/data/workshops.ts` (four made-up workshops, one of which is full).
+
+## Submission notes (explanation)
+
+1. **User Need and Prioritization**
+   - A person who is busy and uses a phone wants to find a workshop that's right for them check if there is a seat available and choose it without confusion.
+   - I made a list that's easy to read (title, category, time seats) added a search by words and a way to filter by category a clear message when there are no results with an easy way to start over and a button that is not clickable and clearly marked for a workshop that is full.
+   - The choices collect into a side summary with options to remove or sign up.
+
+   **Assumptions:**
+   - The list is a shortlist on the phone — real seat booking happens later so no server or login is needed;
+
+   - The list is small and doesn't change, so filtering on title/category/time is enough no need for pages or sorting.
+
+   - **Left out:** payment, accounts, data from a server, pages, sorting and saving data.
+
+2. **Key Choices**:
+   - React 19 and Vite with TypeScript and Tailwind CSS v4 for quick changes and responsive features
+   - React Router for different screens
+   - React Icons for easy to use icons; data stored in a typed file.
+   - The list of choices is stored in the part of the app and shared with the side panel so the number of choices and the list stay the same.
+   - Focus outlines and a message for screen readers help with keyboard and accessibility.
+
+   **Trade-off:** using context to share the list keeps the parts simple but makes the pages depend on the part; a small list would be better for scaling.
+
+3. **Checks, Gaps, Time, Help**
+   - **Checked:** the production build works; tested at phone and computer sizes; used keyboard to move and click; Filters; full workshops can't be chosen; no results reset.
+
+   - **Known issues:** no tests; signing up is not real; the list disappears after a refresh; no tracking.
+
+   - **Time:** 2 hours including this explanation.
+
+   - **Help:** Figma AI (for the look), Builder.io (to start the code), GitHub Copilot (for fixes), plus Vite/React/Tailwind/React Router/React Icons tools.
